@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ChordDatabase</title>
+  </head>
+
+  <body>
+    <ul>	
+        <li><a href="{{ url_for('chords_index') }}">List chords</a></li>
+	    <li><a href="{{ url_for('chords_form') }}">Add a chord</a></li>
+    </ul>
+    {% block body %}
+      <p>
+        Content.
+      </p>
+    {% endblock %}
+  </body>
+</html>
