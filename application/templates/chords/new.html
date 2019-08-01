@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
   
 {% block body %}
+<p> Add new chord by giving it's key, name and notes used in chord separated by commas. Form values could be for example "c", "major", and "c, e, g" </p>
 <form method="POST" action="{{ url_for('chords_create') }}">
   <input type="text" name="key"/>
   <input type="text" name="name"/>
