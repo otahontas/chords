@@ -3,17 +3,14 @@
 {% block body %}
   <table>
     <tr>
-      <th>Chord</th>
-      <th>Favourite</th>
+      <th>Key</th>
+      <th>Name</th>
     </tr>
     {% for chord in chords %}
     <tr>
+      <td>{{ chord.key }}</td>
       <td>{{ chord.name }}</td>
-      <td>{{ chord.favourite }}</td>
-      <td>
-        <form method="POST" action="{{ url_for('chords_set_as_favourite', chord_id=chord.id) }}">
-          <input type="submit" value="Set as favourite" />
-        </form>
+      <td>{{ chord.notes }}</td>
     </tr>
     {% endfor %}
   </table>

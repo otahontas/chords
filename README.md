@@ -23,7 +23,7 @@ Järjestelmä osaa käsitellä kolmi- ja neliäänisiä sointuja (ns. power chor
 # Tietokantakaavio:
 - Account((pk) id:Integer, (fk) role -> Role, name:String, username:String, password:String)
 - Role((pk) id:Integer, name:String)
-- Chord((pk) id:Integer, name:String, favourite:Boolean)
+- Chord((pk) id:Integer, key:String, name:String)
 - ChordNote((fk) chord_id -> Chord, (fk) note_id -> Note, rank:Integer)
 - Note((pk) id:Integer, name:String)
 - Song((pk) id:Integer, name:String, favourite:Boolean)*

@@ -2,7 +2,9 @@
   
 {% block body %}
 <form method="POST" action="{{ url_for('chords_create') }}">
+  <input type="text" name="key"/>
   <input type="text" name="name"/>
+  <input type="text" name="notes"/>
   <input type="submit" value="Add a new chord"/>
 </form>
 {% endblock %}
