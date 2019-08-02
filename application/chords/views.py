@@ -1,6 +1,7 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.chords.models import Chord
+from application.chords.forms import ChordForm
 from application.notes.models import Note
 from application.chordnote.models import ChordNote
 
@@ -11,13 +12,14 @@ def chords_index():
 
 @app.route("/chords/new/")
 def chords_form():
-    return render_template("chords/new.html")
+    return render_template("chords/new.html", form = ChordForm())
 
 
 @app.route("/chords/", methods=["POST"])
 def chords_create():
     # Add chord to database so we can get it's id
-    c = Chord(request.form.get("key"), request.form.get("name"))
+    form = ChordForm(request.form)
+    c = Chord(form.key.data,form.name.data)
     db.session().add(c)
     db.session().commit()
 
