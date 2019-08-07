@@ -9,6 +9,6 @@ class Chord(db.Model):
     key = db.Column(db.String(144), nullable=False)
     name = db.Column(db.String(144), nullable=False)
 
-    def __init__(self,key,name):
+    def __init__(self, key, name):
         self.key = key
         self.name = name

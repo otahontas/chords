@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, validators
+
 
 class ChordForm(FlaskForm):
     key = StringField("Key")
