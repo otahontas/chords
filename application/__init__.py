@@ -29,10 +29,10 @@ except:
 
 # If there's no items in local notes database, initialize database
 if not os.environ.get("HEROKU") and not Note.query.all():
-        with open("application/notes/notesfordatabase.txt") as f:
-            for line in f:
-                n = Note(line.rstrip())
-                db.session().add(n)
+    with open("application/notes/notesfordatabase.txt") as f:
+        for line in f:
+            n = Note(line.rstrip())
+            db.session().add(n)
         db.session().commit()
         if Note.query.count() == 21:
             print("SUCCESS: Notes-table successfully initialized")
