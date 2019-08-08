@@ -37,7 +37,6 @@ def chord_show_notes(chord_id):
 
 
 @app.route("/chords/", methods=["POST"])
-@login_required
 def chords_create():
     # Add chord to database so we can get it's id
     form = ChordForm(request.form)
