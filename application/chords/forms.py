@@ -3,11 +3,13 @@ from wtforms import SelectField, StringField, validators
 
 
 class ChordForm(FlaskForm):
-    # use notes from noteslist
+    # use notes from noteslist 
+    # TODO: käytä tähän samaa moduulia kuin __init__ tulee käyttämään
+    # TODO: Vaihda nuottien syöttäminen kätevämmäksi myöhemmin
     all_notes = []
     with open("application/notes/notesfordatabase.txt") as f:
         for line in f:
-            all_notes.append((line, line))
+            all_notes.append((line, line.title()))
     names = [('major', 'Major'), ('minor', 'Minor')]
 
     key = SelectField("Key", choices=all_notes)

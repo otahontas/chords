@@ -1,10 +1,10 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.chords.models import Chord
-from application.chords.forms import ChordForm
 from application.notes.models import Note
 from application.chordnote.models import ChordNote
-from sqlalchemy.sql import text
+from application.chords.forms import ChordForm
+
 
 @app.route("/chords", methods=["GET"])
 def chords_index():
@@ -14,6 +14,7 @@ def chords_index():
 @app.route("/chords/new/")
 def chords_form():
     return render_template("chords/new.html", form=ChordForm())
+
 
 @app.route("/chords/<chord_id>/", methods=["GET"])
 def chord_show_notes(chord_id):
@@ -29,9 +30,14 @@ def chord_show_notes(chord_id):
     for note in notes_to_show:
         print(note.name)
 
-    return render_template("chords/list.html", chords=Chord.query.all(), selected_chord_id = chord_to_show_id, selected_chord_notes = notes_to_show)
+    return render_template("chords/list.html",
+            chords=Chord.query.all(),
+            selected_chord_id = chord_to_show_id,
+            selected_chord_notes = notes_to_show)
+
 
 @app.route("/chords/", methods=["POST"])
+@login_required
 def chords_create():
     # Add chord to database so we can get it's id
     form = ChordForm(request.form)
@@ -40,6 +46,7 @@ def chords_create():
     db.session().commit()
 
     # get notes from database and turn returned list into dictionary
+    # TODO: Pitäiskö tää siirtää omaan moduuliin, jotta hyödynnettävissä myös muualla?
     notes_in_database = Note.query.with_entities(Note.id, Note.name)
     notes_in_database = {x.name: x.id for x in notes_in_database}
     notes_from_user = request.form.get("notes").replace(" ", "").split(",")

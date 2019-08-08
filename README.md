@@ -35,3 +35,10 @@ tähdellä(*) merkityt ominaisuudet toteutetaan vain, jos kurssin aikana ehditä
 
 # Dokumentaatio:
 - [Käyttötapaukset](/documentation/userstories.md)
+
+# TODO:
+- Tee tietokantakaavio ja siirrä se dokumentaatioon
+- Luo sopivat taulut, joissa crud
+- docstringit metodeihin?
+- kommentoi koodia selkeämmäksi
+- check, että koodi noudattaa python nimeämiskäytänteitä
