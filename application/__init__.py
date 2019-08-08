@@ -4,8 +4,13 @@ app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///chords.db"
-app.config["SQLALCHEMY_ECHO"] = True
+import os 
+
+is os.environ.get("HEROKU"):
+    app.config["SQLALCHEMY_DATABASE_URI"]= os.environ.get("    DATABASE_URL")
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///chords.db"
+    app.config["SQLALCHEMY_ECHO"] = True
 
 db = SQLAlchemy(app)
 
@@ -17,8 +22,12 @@ from application.chords import views
 from application.notes import models
 from application.notes.models import Note
 
-db.create_all()
+try:
+    db.create_all()
+except:
+    pass
 
+# TODO: make this to work only in local env
 # If there's no items in notes database, initialize database
 if not Note.query.all():
     with open("application/notes/notesfordatabase.txt") as f:

@@ -29,5 +29,12 @@
         <input type="submit" value="Add a new chord"/>
       </td>
     </tr>
+    <tr>
+      <td>
+          {% for error in form.notes.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+      </td>
+    </tr>
 </form>
 {% endblock %}
