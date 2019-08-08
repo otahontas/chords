@@ -2,8 +2,8 @@
 
 [Live-demo Herokussa](https://sointutietokanta.herokuapp.com/)
 Testitunnukset:
-- käyttäjä: hello
-- salasana: world
+- käyttäjä: testi
+- salasana: testinen123
 
 # Aihekuvaus
 
