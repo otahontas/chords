@@ -6,6 +6,7 @@ class ChordForm(FlaskForm):
     # use notes from noteslist 
     # TODO: käytä tähän samaa moduulia kuin __init__ tulee käyttämään
     # TODO: Vaihda nuottien syöttäminen kätevämmäksi myöhemmin
+    # TODO: lisää validaatio
     all_notes = []
     with open("application/notes/notesfordatabase.txt") as f:
         for line in f:
@@ -14,7 +15,7 @@ class ChordForm(FlaskForm):
 
     key = SelectField("Key", choices=all_notes)
     name = SelectField("Name", choices=names)
-    notes = StringField("Notes", [validators.InputRequired(message="Field cannot be empty!")])
+    notes = StringField("Notes")
 
     class Meta:
         csrf = False

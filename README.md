@@ -1,6 +1,9 @@
 # Demo
 
 [Live-demo Herokussa](https://sointutietokanta.herokuapp.com/)
+Testitunnukset:
+- käyttäjä: hello
+- salasana: world
 
 # Aihekuvaus
 
@@ -23,7 +26,7 @@ Järjestelmä osaa käsitellä kolmi- ja neliäänisiä sointuja (ns. power chor
 # Tietokantakaavio:
 - Account((pk) id:Integer, (fk) role -> Role, name:String, username:String, password:String)
 - Role((pk) id:Integer, name:String)
-- Chord((pk) id:Integer, key:String, name:String)
+- Chord((pk) id:Integer, key:String, name:String, (fk) account_id -> Account)
 - ChordNote((fk) chord_id -> Chord, (fk) note_id -> Note, rank:Integer)
 - Note((pk) id:Integer, name:String)
 - Song((pk) id:Integer, name:String, favourite:Boolean)*
@@ -38,6 +41,7 @@ tähdellä(*) merkityt ominaisuudet toteutetaan vain, jos kurssin aikana ehditä
 
 # TODO:
 - Tee tietokantakaavio ja siirrä se dokumentaatioon
+- Uusien käyttäjien luontiominaisuus
 - Luo sopivat taulut, joissa crud
 - docstringit metodeihin?
 - kommentoi koodia selkeämmäksi

@@ -1,19 +1,21 @@
-from application import app, db
 from flask import redirect, render_template, request, url_for
+from flask_login import login_required, current_user
+
+from application import app, db
 from application.chords.models import Chord
 from application.notes.models import Note
 from application.chordnote.models import ChordNote
 from application.chords.forms import ChordForm
+from application.auth.models import User
 
 
 @app.route("/chords", methods=["GET"])
 def chords_index():
-    return render_template("chords/list.html", chords=Chord.query.all())
+    users_in_database = User.query.with_entities(User.id, User.name)
+    users_in_database = {x.id: x.name for x in users_in_database}
 
-
-@app.route("/chords/new/")
-def chords_form():
-    return render_template("chords/new.html", form=ChordForm())
+    return render_template("chords/list.html",
+            chords=Chord.query.all(), users=users_in_database)
 
 
 @app.route("/chords/<chord_id>/", methods=["GET"])
@@ -36,11 +38,22 @@ def chord_show_notes(chord_id):
             selected_chord_notes = notes_to_show)
 
 
+@app.route("/chords/new/")
+@login_required
+def chords_form():
+    return render_template("chords/new.html", form=ChordForm())
+
+
 @app.route("/chords/", methods=["POST"])
+@login_required
 def chords_create():
-    # Add chord to database so we can get it's id
+    # get form and check forward back to form if input is not validated
+    # TODO: add validation
     form = ChordForm(request.form)
+
+    # Add chord to database so we can get it's id
     new_chord = Chord(form.key.data, form.name.data)
+    new_chord.account_id = current_user.id
     db.session().add(new_chord)
     db.session().commit()
 

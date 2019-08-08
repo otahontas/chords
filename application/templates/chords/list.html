@@ -5,12 +5,14 @@
     <tr>
       <th>Key</th>
       <th>Name</th>
+      <th>Added by</th>
       <th>Notes</th>
     </tr>
     {% for chord in chords %}
     <tr>
       <td>{{ chord.key }}</td>
       <td>{{ chord.name }}</td>
+      <td>{{ users[chord.account_id] }}</td>
       <td>
         {% if chord.id == selected_chord_id %}
             {% for note in selected_chord_notes %}
