@@ -1,15 +1,14 @@
 from flask_wtf import FlaskForm
 from wtforms import SelectField, StringField, validators
-from application.notes.models import Note
 
 
 class ChordForm(FlaskForm):
-    # use notes from noteslist 
+    # use notes from noteslist
     all_notes = []
     with open("application/notes/notesfordatabase.txt") as f:
         for line in f:
             all_notes.append((line, line))
-    names=[('major', 'Major'), ('minor', 'Minor')]
+    names = [('major', 'Major'), ('minor', 'Minor')]
 
     key = SelectField("Key", choices=all_notes)
     name = SelectField("Name", choices=names)

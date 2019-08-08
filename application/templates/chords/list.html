@@ -5,12 +5,23 @@
     <tr>
       <th>Key</th>
       <th>Name</th>
+      <th>Notes</th>
     </tr>
     {% for chord in chords %}
     <tr>
       <td>{{ chord.key }}</td>
       <td>{{ chord.name }}</td>
-      <td>{{ chord.notes }}</td>
+      <td>
+        {% if chord.id == selected_chord_id %}
+            {% for note in selected_chord_notes %}
+                {{ note.name }}
+            {% endfor %}
+        {% else %}
+          <form method="GET" action="{{ url_for('chord_show_notes', chord_id=chord.id) }}">
+            <input type="submit" value="Show"/>
+          </form>
+        {% endif %}
+      </td>
     </tr>
     {% endfor %}
   </table>
