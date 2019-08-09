@@ -1,10 +1,10 @@
 # Tietokantarakenteen kuvaus
 
 ## Tietokantakaavio
-
+![Tietokantakaavio Draw.io -palvelun avulla piirrettynä](https://raw.githubusercontent.com/otahontas/sointutietokanta/master/documentation/recourses/ChordDB_diagram.png)
 
 ## Create TABLE -lauseet
-**Status 9.8.**
+**Status ohjelman tilasta 9.8.**
 
 ```
 CREATE TABLE note (
