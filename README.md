@@ -7,38 +7,34 @@ Testitunnukset:
 
 # Aihekuvaus
 
-Projektissa laaditaan järjestelmä, jossa ylläpidetään informaatiota [soinnuista](https://fi.wikipedia.org/wiki/Sointu) ja jos aikaa riittää, työtä laajennetaan listalla kappaleista, joissa sointuja käytetään. Käyttäjät voivat kirjautua järjestelmään, hakea sieltä sointuja, lisätä sointuja, lisätä, muokata ja poistaa kappaleita* sekä lisätä sointuja kappaleiden* yhteyteen. Vain admin-tunnuksilla voi muokata tai poistaa sointuja - tällä vältetään kappaleisiin kiinnitettyjen sointujen ilkivaltainen poistaminen. Lisäksi sointuja sekä kappaleita* voi merkityä suosikseiksi
+Projektissa laaditaan järjestelmä, jossa ylläpidetään informaatiota [soinnuista](https://fi.wikipedia.org/wiki/Sointu) ja kappaleista, joissa sointuja käytetään. Käyttäjät voivat kirjautua järjestelmään, hakea sieltä sointuja, lisätä sointuja, lisätä, muokata ja poistaa kappaleita sekä lisätä sointuja kappaleiden* yhteyteen. Vain admin-tunnuksilla voi muokata tai poistaa sointuja - tällä vältetään kappaleisiin kiinnitettyjen sointujen ilkivaltainen poistaminen. Lisäksi kappaleita voi merkityä suosikseiksi
 
-Järjestelmä osaa käsitellä kolmi- ja neliäänisiä sointuja (ns. power chordit ja neliäänisiä useammat soinnut jätetään huomiotta). Alkutilanteessa tietokanta sisältää ainoastaan nuotteja, joista soinnut koostetaan. Sointupankki kehittyy käyttäjien syöttäessä tietokantaan lisää sointuja.
+Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä kolmisointuja laajemmat soinnut jätetään huomiotta). Alkutilanteessa tietokanta sisältää ainoastaan nuotteja, joista soinnut koostetaan. Sointupankki kehittyy käyttäjien syöttäessä tietokantaan lisää sointuja.
 
 ## Toiminnot:
-- kirjautuminen
-- soinnun hakeminen ja siinä esiintyvien sävelien listaaminen
+- kirjautuminen ja uuden käyttäjän luominen
 - soinnun lisääminen
-- sointujen ja kappaleiden* merkkaaminen suosikiksi
-- kaikkien sointujen tai kappaleiden* listaaminen sekä filtteröinti suosituimmuuden mukaan
-- kappaleiden* syöttö, poisto ja muokkaus sekä sointujen lisääminen kappaleiden yhteyteen
-- sointujen listaaminen kappaleen yhteydessä
+- kaikkien sointujen listaaminen, sointujen hakeminen ja siinä esiintyvien sävelien listaaminen
+- kappaleiden lisääminen, listaaminen ja hakeminen sekä muokkaaminen ja poistaminen (CRUD-ominaisuudet)
+- sointujen lisääminen kappaleisiin sekä sointujen listaaminen kappaleen yhteydessä
+- kappaleiden merkkaaminen suosikiksi
+- suosituimpien kappaleiden listaaminen (jos kerkeää)
 - Lisäksi ylläpitäjän toiminnot:
     - Muokkaa tai poista sointuja
     - Listaa, muokkaa tai poista käyttäjiä
 
-# Tietokantakaavio:
-- Role((pk) id:Integer, name:String)
-- Song((pk) id:Integer, name:String, favourite:Boolean)*
-- SongChord((fk) chord_id -> Chord, (fk) song_id -> Song)*
-- AccountFavouriteChord((fk) account_id -> Account, (fk) chord_id -> Chord)
-- AccountFavouriteSong((fk) account_id -> Account, (fk) song_id -> Song)*
-
-tähdellä(*) merkityt ominaisuudet toteutetaan vain, jos kurssin aikana ehditään. Sointuominaisuuksien toteuttaminen on ensisijainen prioriteetti.
 
 # Dokumentaatio:
 - [Käyttötapaukset](/documentation/userstories.md)
+- [Tietokantarakenteen kuvaus](/documentation/databasestructure.md)
 
 # TODO:
-- Tee tietokantakaavio ja siirrä se dokumentaatioon
 - Uusien käyttäjien luontiominaisuus
 - Luo sopivat taulut, joissa crud
 - docstringit metodeihin?
 - kommentoi koodia selkeämmäksi
-- check, että koodi noudattaa python nimeämiskäytänteitä
+- check, että koodi noudattaa pythonin nimeämiskäytänteitä
+- Päivitä käyttötapauksia
+- Tee käyttötapauksien SQL-kyselyt
+- Tee asennusohjeet
+- Tee käyttöohjeet
