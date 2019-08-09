@@ -24,11 +24,7 @@ Järjestelmä osaa käsitellä kolmi- ja neliäänisiä sointuja (ns. power chor
     - Listaa, muokkaa tai poista käyttäjiä
 
 # Tietokantakaavio:
-- Account((pk) id:Integer, (fk) role -> Role, name:String, username:String, password:String)
 - Role((pk) id:Integer, name:String)
-- Chord((pk) id:Integer, key:String, name:String, (fk) account_id -> Account)
-- ChordNote((fk) chord_id -> Chord, (fk) note_id -> Note, rank:Integer)
-- Note((pk) id:Integer, name:String)
 - Song((pk) id:Integer, name:String, favourite:Boolean)*
 - SongChord((fk) chord_id -> Chord, (fk) song_id -> Song)*
 - AccountFavouriteChord((fk) account_id -> Account, (fk) chord_id -> Chord)
