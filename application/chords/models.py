@@ -11,6 +11,7 @@ class Chord(Base):
                            nullable=False)
 
     chord_notes = db.relationship("ChordNote", backref='chord', lazy=True)
+    song_chords = db.relationship("SongChord", backref='chord', lazy=True)
 
     def __init__(self, key, name):
         self.key = key

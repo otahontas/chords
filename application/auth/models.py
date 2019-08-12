@@ -11,6 +11,7 @@ class User(Base):
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
 
     chords = db.relationship("Chord", backref='account', lazy=True)
+    songs = db.relationship("Song", backref='account', lazy=True)
 
     def __init__(self, name, username, password):
         self.name = name

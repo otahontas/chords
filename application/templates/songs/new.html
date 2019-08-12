@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<p> Add new chord by giving it's key, name and notes used in chord separated by commas. Form values could be for example "c", "major", and "c, e, g" </p>
+<form method="POST" action="{{ url_for('chords_create') }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.key.label }}
+      </td>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.notes.label }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.key }}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+      <td>
+        {{ form.notes }}
+      </td>
+      <td>
+        <input type="submit" value="Add a new chord"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+          {% for error in form.notes.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+      </td>
+    </tr>
+</form>
+{% endblock %}

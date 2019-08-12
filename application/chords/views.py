@@ -11,6 +11,8 @@ from application.auth.models import User
 
 @app.route("/chords", methods=["GET"])
 def chords_index():
+    """View controller for showing all chords"""
+
     users_in_database = User.query.with_entities(User.id, User.name)
     users_in_database = {x.id: x.name for x in users_in_database}
 
@@ -20,8 +22,10 @@ def chords_index():
 
 @app.route("/chords/<chord_id>/", methods=["GET"])
 def chord_show_notes(chord_id):
+    """View controller for showing notes for individual chord"""
     chord_to_show_id = Chord.query.get(chord_id).id
-    # TODO: refactor this so we don't have to get user list every time notes are shown for one chord
+    # TODO: refactor this so we don't have to get user list every time notes 
+    # are shown for one chord, it'll eventually become slow
     users_in_database = User.query.with_entities(User.id, User.name)
     users_in_database = {x.id: x.name for x in users_in_database}
     notes_to_show = (db.session.query(Note)
@@ -45,24 +49,24 @@ def chord_show_notes(chord_id):
 @app.route("/chords/new/")
 @login_required
 def chords_form():
+    """View controller for adding new chord -functionality"""
     return render_template("chords/new.html", form=ChordForm())
 
 
 @app.route("/chords/", methods=["POST"])
 @login_required
 def chords_create():
-    # get form and check forward back to form if input is not validated
-    # TODO: add validation
+    """Method gets user input from form, adds new chord to db, catches its id
+    and links chord to notes user has given"""
     form = ChordForm(request.form)
 
-    # Add chord to database so we can get it's id
     new_chord = Chord(form.key.data, form.name.data)
     new_chord.account_id = current_user.id
     db.session().add(new_chord)
     db.session().commit()
 
-    # get notes from database and turn returned list into dictionary
-    # TODO: Pitäiskö tää siirtää omaan moduuliin, jotta hyödynnettävissä myös muualla?
+    # TODO: Refactor, this should be moved to different module so we can reuse 
+    # it later
     notes_in_database = Note.query.with_entities(Note.id, Note.name)
     notes_in_database = {x.name: x.id for x in notes_in_database}
     notes_from_user = request.form.get("notes").replace(" ", "").split(",")

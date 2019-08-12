@@ -30,6 +30,7 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 
 # TODO:
 - Song-taulu, sille views ja CRUD ominaisuudet
+    - Fiksaa song-taulu kaaviosta
 - Song ja chord linkitykset
 - Chord adding-vaiheeseen parempi UI
 - Validinnoinnit sinne mihin tarvitsee

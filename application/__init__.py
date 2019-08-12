@@ -16,11 +16,13 @@ db = SQLAlchemy(app, session_options={"autoflush": False})
 
 # Load models features from different modules
 
-from application.auth import role
 from application.auth import models
+from application.auth import role
 from application.chordnote import models
 from application.chords import models
 from application.notes import models
+from application.songs import models
+from application.songchord import models
 
 # Create tables if needed
 
@@ -48,6 +50,7 @@ except:
 from application import views
 from application.auth import views
 from application.chords import views
+from application.songs import views
 
 # Login functionality
 from application.auth.models import User
