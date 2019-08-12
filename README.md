@@ -29,12 +29,20 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 - [Tietokantarakenteen kuvaus](/documentation/databasestructure.md)
 
 # TODO:
-- Uusien käyttäjien luontiominaisuus
-- Luo sopivat taulut, joissa crud
-- docstringit metodeihin?
-- kommentoi koodia selkeämmäksi
-- check, että koodi noudattaa pythonin nimeämiskäytänteitä
-- Päivitä käyttötapauksia
-- Tee käyttötapauksien SQL-kyselyt
-- Tee asennusohjeet
-- Tee käyttöohjeet
+- Song-taulu, sille views ja CRUD ominaisuudet
+- Song ja chord linkitykset
+- Chord adding-vaiheeseen parempi UI
+- Validinnoinnit sinne mihin tarvitsee
+- yhteenvetokyselyt
+- Bootstrap
+- Haku
+- Suosikkisoinnut
+- Rekisteröitymisen selkeyttäminen, parempi passuvalidointi
+- Jatkuvasti chekattavaa / erityisesti lopussa
+    - dokumentaatio
+    - koodin selkeys (naming conventions, docstrings, moduulit)
+    - abstrahointi + moduuleihin eristäminen
+    - Päivitä käyttötapauksia
+    - Tee käyttötapauksien SQL-kyselyt
+    - Tee asennusohjeet
+    - Tee käyttöohjeet
