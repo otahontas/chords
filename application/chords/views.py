@@ -13,8 +13,8 @@ from application.auth.models import User
 def chords_index():
     """View controller for showing all chords"""
 
-    users_in_database = User.query.with_entities(User.id, User.name)
-    users_in_database = {x.id: x.name for x in users_in_database}
+    users_in_database = User.query.with_entities(User.id, User.username)
+    users_in_database = {x.id: x.username for x in users_in_database}
 
     return render_template("chords/list.html",
             chords=Chord.query.all(), users=users_in_database)
@@ -26,8 +26,8 @@ def chord_show_notes(chord_id):
     chord_to_show_id = Chord.query.get(chord_id).id
     # TODO: refactor this so we don't have to get user list every time notes 
     # are shown for one chord, it'll eventually become slow
-    users_in_database = User.query.with_entities(User.id, User.name)
-    users_in_database = {x.id: x.name for x in users_in_database}
+    users_in_database = User.query.with_entities(User.id, User.username)
+    users_in_database = {x.id: x.username for x in users_in_database}
     notes_to_show = (db.session.query(Note)
         .join(ChordNote)
         .join(Chord)
@@ -36,8 +36,6 @@ def chord_show_notes(chord_id):
         .filter(Chord.id == chord_id)
         .order_by(ChordNote.rank)
         .all())
-    for note in notes_to_show:
-        print(note.name)
 
     return render_template("chords/list.html",
             chords=Chord.query.all(),
