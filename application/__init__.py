@@ -11,26 +11,22 @@ if os.environ.get("HEROKU"):
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///chords.db"
     app.config["SQLALCHEMY_ECHO"] = True
-db = SQLAlchemy(app, session_options={"autoflush": False})
+db = SQLAlchemy(app)
+#db = SQLAlchemy(app, session_options={"autoflush": False})
 
-
-# Load models features from different modules
-
+# Load models from different modules
 from application.auth import models
 from application.auth import role
-from application.chordnote import models
 from application.chords import models
+from application.linktables import models
 from application.notes import models
 from application.songs import models
-from application.songchord import models
 
-# Create tables if needed
-
+# Create tables
 try:
     db.create_all()
-    # TODO: siirrä omaan moduuliinsa?
+    # TODO: move initializing to it's own module?
     # Initialize notes table if not available
-    from application.notes import models
     from application.notes.models import Note
     if not Note.query.all():
         with open("application/notes/notesfordatabase.txt") as f:
@@ -46,7 +42,6 @@ except:
     pass
 
 # Import views from different modules
-
 from application import views
 from application.auth import views
 from application.chords import views

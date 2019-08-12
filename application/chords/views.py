@@ -2,12 +2,11 @@ from flask import redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 
 from application import app, db
-from application.chords.models import Chord
-from application.notes.models import Note
-from application.chordnote.models import ChordNote
-from application.chords.forms import ChordForm
 from application.auth.models import User
-
+from application.chords.models import Chord
+from application.linktables.models import ChordNote
+from application.notes.models import Note
+from application.chords.forms import ChordForm
 
 @app.route("/chords", methods=["GET"])
 def chords_index():
