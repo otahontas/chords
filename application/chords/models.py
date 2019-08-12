@@ -1,8 +1,8 @@
 from application import db
-from application.models import Base
+from application.models import BaseWithDates
 
 
-class Chord(Base):
+class Chord(BaseWithDates):
 
     key = db.Column(db.String(144), nullable=False)
     name = db.Column(db.String(144), nullable=False)

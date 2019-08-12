@@ -1,8 +1,8 @@
 from application import db
-from application.models import Base
+from application.models import BaseWithDates
 
 
-class User(Base):
+class User(BaseWithDates):
     __tablename__ = "account"
 
     name = db.Column(db.String(144), nullable=False)

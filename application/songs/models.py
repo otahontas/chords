@@ -1,8 +1,8 @@
 from application import db
-from application.models import Base
+from application.models import BaseWithDates
 
 
-class Song(Base):
+class Song(BaseWithDates):
 
     name = db.Column(db.String(144), nullable=False)
     artist = db.Column(db.String(144), nullable=False)
