@@ -9,6 +9,9 @@ class Chord(Base):
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
             nullable=False)
+
+    chord_notes = db.relationship("ChordNote", backref='chord', lazy=True)
+
     def __init__(self, key, name):
         self.key = key
         self.name = name
