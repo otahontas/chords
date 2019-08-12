@@ -8,7 +8,7 @@ class User(Base):
     name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
-    role = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
+    role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
 
     chords = db.relationship("Chord", backref='account', lazy=True)
 
@@ -17,7 +17,7 @@ class User(Base):
         self.username = username
         self.password = password
         self.roles = 1
-  
+
     def get_id(self):
         return self.id
 

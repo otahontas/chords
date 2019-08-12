@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h2>Register</h2>
+<!--
+    ks. hyvä rekisteröitymislomakepohja
+    https://blog.prototypr.io/8-ways-to-create-the-perfect-registration-form-6a155ed972f1?gi=22aa1036d4d4
+-->
+{{ error }}
+<form method="POST" action="{{ url_for('auth_register') }}">
+  <table>
+    <tr>
+      <td>
+	{{ form.name.label }}
+      </td>
+      <td>
+	{{ form.name }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+	{{ form.username.label }}
+      </td>
+      <td>
+	{{ form.username }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+	{{ form.password.label }}
+      </td>
+      <td>
+	{{ form.password }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+	{{ form.passwordAgain.label }}
+      </td>
+      <td>
+	{{ form.passwordAgain }}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+	<input type="submit" value="Register"/>
+      </td>
+    </tr>
+</form>
+{% endblock %}

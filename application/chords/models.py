@@ -8,7 +8,7 @@ class Chord(Base):
     name = db.Column(db.String(144), nullable=False)
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
-            nullable=False)
+                           nullable=False)
 
     chord_notes = db.relationship("ChordNote", backref='chord', lazy=True)
 
