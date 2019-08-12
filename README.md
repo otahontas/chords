@@ -29,12 +29,16 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 - [Tietokantarakenteen kuvaus](/documentation/databasestructure.md)
 
 # TODO:
-- Song-taulu, sille views ja CRUD ominaisuudet
-    - Fiksaa song-taulu kaaviosta
+- Soinnut ja kappaleet omiksi otsikoikseen
+    - Sointujen alle sointujen lisäys ja kaikkien listaaminen
+    - Kappaleiden alle kappaleiden lisäys, kaikkien listaaminen, yksittäisen katselu muokkaaminen ja poistaminen
 - Song ja chord linkitykset
 - Chord adding-vaiheeseen parempi UI
-- Validinnoinnit sinne mihin tarvitsee
-- yhteenvetokyselyt
+- Bootstrap:
+    - Validoinnit ja virheilmoitusten näyttäminen: login, A
+    - Onnistunut rekisteröityminen -ilmoitus
+- yksittäisen kappaleen näkymisen urlissa virhe (näkyy ylimääräinen kysymysmerkki): fiksaa
+- yhteenvetokyselyt etusivulle
 - Bootstrap
 - Haku
 - Suosikkisoinnut
