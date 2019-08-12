@@ -12,6 +12,7 @@ class User(BaseWithDates):
 
     chords = db.relationship("Chord", backref='account', lazy=True)
     songs = db.relationship("Song", backref='account', lazy=True)
+    favourite_songs = db.relationship("UserFavouriteSong", backref='account', lazy=True)
 
     def __init__(self, name, username, password):
         self.name = name

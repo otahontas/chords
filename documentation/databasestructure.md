@@ -4,7 +4,6 @@
 ![Tietokantakaavio Draw.io -palvelun avulla piirrettynä](https://raw.githubusercontent.com/otahontas/sointutietokanta/master/documentation/recourses/ChordDB_diagram.png)
 
 ## Create TABLE -lauseet
-**Status ohjelman tilasta 12.8.**
 
 ```
 CREATE TABLE role (
@@ -65,5 +64,13 @@ CREATE TABLE song_chord (
         PRIMARY KEY (id),
         FOREIGN KEY(song_id) REFERENCES song (id),
         FOREIGN KEY(note_id) REFERENCES chord (id)
+);
+CREATE TABLE user_favourite_song (
+        id INTEGER NOT NULL,
+        song_id INTEGER NOT NULL,
+        account_id INTEGER NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY(song_id) REFERENCES song (id),
+        FOREIGN KEY(account_id) REFERENCES account (id)
 );
 ```

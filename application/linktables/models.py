@@ -18,3 +18,12 @@ class SongChord(Base):
 
     def __init__(self):
         pass
+
+class UserFavouriteSong(Base):
+
+    song_id = db.Column(db.Integer, db.ForeignKey('song.id'), nullable=False)
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
+                           nullable=False)
+
+    def __init__(self):
+        pass
