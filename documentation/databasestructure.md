@@ -4,15 +4,20 @@
 ![Tietokantakaavio Draw.io -palvelun avulla piirrettynä](https://raw.githubusercontent.com/otahontas/sointutietokanta/master/documentation/recourses/ChordDB_diagram.png)
 
 ## Create TABLE -lauseet
-**Status ohjelman tilasta 9.8.**
+**Status ohjelman tilasta 12.8.**
 
 ```
+CREATE TABLE role (
+        id INTEGER NOT NULL,
+        name VARCHAR(100) NOT NULL,
+        display_name VARCHAR(100) NOT NULL,
+        PRIMARY KEY (id)
+);
 CREATE TABLE note (
         id INTEGER NOT NULL,
         name VARCHAR(144) NOT NULL,
         PRIMARY KEY (id)
 );
-
 CREATE TABLE account (
         id INTEGER NOT NULL,
         date_created DATETIME,
@@ -20,9 +25,10 @@ CREATE TABLE account (
         name VARCHAR(144) NOT NULL,
         username VARCHAR(144) NOT NULL,
         password VARCHAR(144) NOT NULL,
-        PRIMARY KEY (id)
+        role_id INTEGER,
+        PRIMARY KEY (id),
+        FOREIGN KEY(role_id) REFERENCES role (id)
 );
-
 CREATE TABLE chord (
         id INTEGER NOT NULL,
         date_created DATETIME,
@@ -33,14 +39,31 @@ CREATE TABLE chord (
         PRIMARY KEY (id),
         FOREIGN KEY(account_id) REFERENCES account (id)
 );
-
+CREATE TABLE song (
+        id INTEGER NOT NULL,
+        date_created DATETIME,
+        date_modified DATETIME,
+        name VARCHAR(144) NOT NULL,
+        artist VARCHAR(144) NOT NULL,
+        account_id INTEGER NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY(account_id) REFERENCES account (id)
+);
 CREATE TABLE chord_note (
         id INTEGER NOT NULL,
         chord_id INTEGER NOT NULL,
         note_id INTEGER NOT NULL,
-        rank INTEGER,
+        rank INTEGER NOT NULL,
         PRIMARY KEY (id),
         FOREIGN KEY(chord_id) REFERENCES chord (id),
         FOREIGN KEY(note_id) REFERENCES note (id)
+);
+CREATE TABLE song_chord (
+        id INTEGER NOT NULL,
+        song_id INTEGER NOT NULL,
+        note_id INTEGER NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY(song_id) REFERENCES song (id),
+        FOREIGN KEY(note_id) REFERENCES chord (id)
 );
 ```
