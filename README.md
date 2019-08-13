@@ -29,6 +29,7 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 - [Tietokantarakenteen kuvaus](/documentation/databasestructure.md)
 
 # TODO:
+- Heroku postresql -kannan täydennys sellaiseksi, että toimii
 - Soinnut ja kappaleet omiksi otsikoikseen
     - Sointujen alle sointujen lisäys ja kaikkien listaaminen
     - Kappaleiden alle kappaleiden lisäys, kaikkien listaaminen, yksittäisen katselu muokkaaminen ja poistaminen
@@ -51,3 +52,7 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
     - Tee käyttötapauksien SQL-kyselyt
     - Tee asennusohjeet
     - Tee käyttöohjeet
+- Siivoilu
+    - poista unnecessary stuff reposta
+    - .gitignore kunnossa
+    - development mode pois
