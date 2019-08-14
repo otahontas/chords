@@ -54,7 +54,7 @@ def chords_form():
 @login_required
 def chords_create():
     """Method gets user input from form, adds new chord to db, catches its id
-    and links chord to notes user has given"""
+    and links chord to notes (base + others) user has given"""
     form = ChordForm(request.form)
 
     new_chord = Chord(form.key.data, form.name.data)
@@ -62,13 +62,12 @@ def chords_create():
     db.session().add(new_chord)
     db.session().commit()
 
-    # TODO: Refactor, this should be moved to different module so we can reuse 
-    # it later
+    # TODO: Refactor, this should be moved to different module so we can reuse it later
     notes_in_database = Note.query.with_entities(Note.id, Note.name)
     notes_in_database = {x.name: x.id for x in notes_in_database}
-    notes_from_user = request.form.get("notes").replace(" ", "").split(",")
+    notes_from_user = [new_chord.key].extend(form.notes.data)
+    notes_from_user = [x.rstrip() for x in notes_from_user]
 
-    # link notes user has given to chord
     for i, note in enumerate(notes_from_user):
         new_note = ChordNote(i)
         new_note.chord_id = new_chord.id
