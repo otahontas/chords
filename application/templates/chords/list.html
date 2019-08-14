@@ -1,18 +1,22 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table>
+<h3>Browse chords</h3>
+  <table class="table">
     {% if not chords %}
     <tr>
         <td>No chords added. Please add one!</td>
     </tr>
     {% else %}
-    <tr>
-      <th>Key</th>
-      <th>Name</th>
-      <th>Added by</th>
-      <th>Notes</th>
-    </tr>
+    <thead>
+      <tr>
+        <th scope="col">Key</th>
+        <th scope="col">Name</th>
+        <th scope="col">Added by</th>
+        <th scope="col">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
       {% for chord in chords %}
       <tr>
         <td>{{ chord.key }}</td>
@@ -31,8 +35,13 @@
         </td>
       </tr>
       {% endfor %}
+     </tbody>
      {% endif %}
   </table>
+
+  <div class="row">
+    <div class="col">
+      <a href="/chords/new" class="btn btn-outline-success">Add new chord</a>
+    </div>
+  </div>
 {% endblock %}
-
-
