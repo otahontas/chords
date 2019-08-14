@@ -1,7 +1,20 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <p>
-    Welcome! List chords added by users or add one yourself.
-  </p>
+<h1>Chord Database</h1>
+  <div class="row">
+    <div class="col">
+      <p>
+        Welcome! View songs, chords or add your own.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <a href="{{ url_for('chords_index') }} " class="btn btn-outline-primary">Check out all chords</a>
+    </div>
+    <div class="col">
+        <a href="{{ url_for('songs_index') }} " class="btn btn-outline-primary">Check out all songs</a>
+    </div>
+</div>
 {% endblock %}
