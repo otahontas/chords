@@ -3,32 +3,39 @@
 {% block body %}
 <h3>Add new chord</h3>
 <div class="alert alert-info">
-Add new chord by giving it's key, name and notes used in chord separated by commas. Form values could be for example "c", "major", and "c, e, g".
+Add new chord by giving it's base key, name and other notes used in chord. Values could be for example key "D", name "Minor" and notes "F, A".
 </div>
 <h3>Chord values</h3>
 <form method="POST" action="{{ url_for('chords_create') }}">
   <div class="form-row">
-    <div class="form-group col">
+    <div class="form-group col-sm-3">
       <label for="key">{{ form.key.label }}</label>
     </div>
-    <div class="form-group col">
-      <label for="name">{{ form.name.label }}</label>
-    </div>
-    <div class="form-group col">
-      <label for="notes">{{ form.notes.label }}</label>
+    <div class="form-group col-sm-3">
+      {{ form.key(class="form-control") }}
     </div>
   </div>
   <div class="form-row">
-    <div class="form-group col">
-        {{ form.key }}
+    <div class="form-group col-sm-3">
+      <label for="name">{{ form.name.label }}</label>
     </div>
-    <div class="form-group col">
-        {{ form.name }}
+    <div class="form-group col-sm-3">
+      {{ form.name(class="form-control") }}
     </div>
-    <div class="form-group col">
-        {{ form.notes }}
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-3">
+      <label for="notes">{{ form.notes.label }}</label>
+      <small id="notesHelpBlock" class="form-text text-muted">
+          Multiple notes can be selected by holding shift down on Desktop
+      </small>
     </div>
-    <div class="form-group col">
+    <div class="form-group col-sm-3">
+      {{ form.notes(class="form-control") }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-3">
         <input type="submit" value="Add a new chord" class="btn btn-success" />
     </div>
   </div>

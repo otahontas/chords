@@ -19,17 +19,17 @@
     <tbody>
       {% for chord in chords %}
       <tr>
-        <td>{{ chord.key }}</td>
-        <td>{{ chord.name }}</td>
+        <td>{{ chord.key.title() }}</td>
+        <td>{{ chord.name.title() }}</td>
         <td>{{ users[chord.account_id] }}</td>
         <td>
           {% if chord.id == selected_chord_id %}
               {% for note in selected_chord_notes %}
-                  {{ note.name }}
+                  {{ note.name.title() }}
               {% endfor %}
           {% else %}
             <form method="GET" action="{{ url_for('chord_show_notes', chord_id=chord.id) }}">
-              <input type="submit" value="Show"/>
+              <input type="submit" value="Show" class="btn btn-outline-success" />
             </form>
           {% endif %}
         </td>
