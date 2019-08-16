@@ -29,21 +29,24 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 - [Tietokantarakenteen kuvaus](/documentation/databasestructure.md)
 
 # TODO:
-- Heroku postresql -kannan täydennys sellaiseksi, että toimii
-- Soinnut ja kappaleet omiksi otsikoikseen
-    - Sointujen alle sointujen lisäys ja kaikkien listaaminen
+[x] Heroku postresql -kannan täydennys sellaiseksi, että toimii
+[x] Soinnut ja kappaleet omiksi otsikoikseen
+    [x] Sointujen alle sointujen lisäys, kaikkien sointujen listaaminen ja yksittäisen nuottien tarkastelu
     - Kappaleiden alle kappaleiden lisäys, kaikkien listaaminen, yksittäisen katselu muokkaaminen ja poistaminen
 - Song ja chord linkitykset
-- Chord adding-vaiheeseen parempi UI
+[x] Chord adding-vaiheeseen parempi UI
+[x] Bootstrap alustava
 - Bootstrap:
-    - Validoinnit ja virheilmoitusten näyttäminen: login, A
+    [x] - Validoinnit ja virheilmoitusten näyttäminen: login, lisäykset
     - Onnistunut rekisteröityminen -ilmoitus
-- yksittäisen kappaleen näkymisen urlissa virhe (näkyy ylimääräinen kysymysmerkki): fiksaa
+[x] yksittäisen kappaleen näkymisen urlissa virhe (näkyy ylimääräinen kysymysmerkki): fiksaa
 - yhteenvetokyselyt etusivulle
-- Bootstrap
 - Haku
 - Suosikkisoinnut
 - Rekisteröitymisen selkeyttäminen, parempi passuvalidointi
+- passwordit salatuiksi kannassa
+- admin-toolit ja sointujen päivittämisnäkymä
+- sointujen rankin lisääminen oikein kun sävelet on oikeesti eri järjestyksessä
 - Jatkuvasti chekattavaa / erityisesti lopussa
     - dokumentaatio
     - koodin selkeys (naming conventions, docstrings, moduulit)
