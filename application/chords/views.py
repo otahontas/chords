@@ -21,7 +21,7 @@ def chords_index():
                            users=users_in_database)
 
 
-@app.route("/chords/<chord_id>/", methods=["GET"])
+@app.route("/chords/<chord_id>", methods=["GET"])
 def chord_show_notes(chord_id):
     """View controller for showing notes for individual chord"""
 
@@ -44,14 +44,14 @@ def chord_show_notes(chord_id):
                            selected_chord_notes=notes_to_show)
 
 
-@app.route("/chords/new/")
+@app.route("/chords/new")
 @login_required
 def chords_form():
     """View controller for adding new chord"""
     return render_template("chords/new.html", form=ChordForm())
 
 
-@app.route("/chords/", methods=["POST"])
+@app.route("/chords", methods=["POST"])
 @login_required
 def chords_create():
     """Method gets user input from form, adds new chord to db, catches its id

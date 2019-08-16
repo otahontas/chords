@@ -10,22 +10,21 @@ from application.songs.forms import SongForm
 @app.route("/songs", methods=["GET"])
 def songs_index():
     """View controller for showing all songs"""
-    users_in_database = User.query.with_entities(User.id, User.name)
-    users_in_database = {x.id: x.name for x in users_in_database}
-
+    users_in_database = User.query.with_entities(User.id, User.username)
+    users_in_database = {x.id: x.username for x in users_in_database}
     return render_template("songs/list.html",
                            songs=Song.query.all(),
                            users=users_in_database)
 
 
-@app.route("/songs/new/")
+@app.route("/songs/new")
 @login_required
 def songs_form():
     """View controller for adding new song"""
     return render_template("songs/new.html", form=SongForm())
 
 
-@app.route("/songs/", methods=["POST"])
+@app.route("/songs", methods=["POST"])
 @login_required
 def songs_create():
     """Method gets user input from form and adds new song to db"""
