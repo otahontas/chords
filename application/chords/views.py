@@ -47,7 +47,7 @@ def chord_show_notes(chord_id):
 @app.route("/chords/new/")
 @login_required
 def chords_form():
-    """View controller for adding new chord -functionality"""
+    """View controller for adding new chord"""
     return render_template("chords/new.html", form=ChordForm())
 
 
@@ -57,8 +57,6 @@ def chords_create():
     """Method gets user input from form, adds new chord to db, catches its id
     and links chord to notes (base + others) user has given"""
     form = ChordForm(request.form)
-
-    print(form.notes.data)
 
     if not form.validate():
         return render_template("chords/new.html", form=form)
