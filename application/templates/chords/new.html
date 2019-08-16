@@ -27,13 +27,21 @@ Add new chord by giving it's base key, name and other notes used in chord. Value
     <div class="form-group col-sm-3">
       <label for="notes">{{ form.notes.label }}</label>
       <small id="notesHelpBlock" class="form-text text-muted">
-          Multiple notes can be selected by holding shift down on Desktop
+          Multiple notes can be selected by holding control / command down on Desktop
       </small>
     </div>
     <div class="form-group col-sm-3">
-      {{ form.notes(class="form-control") }}
+        {{ form.notes(class="form-control", size="6") }}
     </div>
   </div>
+  {% if form.notes.errors %}
+        {% for error in form.notes.errors %}
+        <div class="row alert alert-danger" role="alert">
+           {{ error }}
+        </div>
+        {% endfor %}
+  </div>
+  {% endif %}
   <div class="form-row">
     <div class="form-group col-sm-3">
         <input type="submit" value="Add a new chord" class="btn btn-success" />

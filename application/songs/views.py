@@ -4,7 +4,7 @@ from flask_login import login_required, current_user
 from application import app, db
 from application.auth.models import User
 from application.songs.models import Song
-from application.songs.forms import SongForm 
+from application.songs.forms import SongForm
 
 
 @app.route("/songs", methods=["GET"])
