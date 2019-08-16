@@ -1,40 +1,43 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<p> Add new chord by giving it's key, name and notes used in chord separated by commas. Form values could be for example "c", "major", and "c, e, g" </p>
-<form method="POST" action="{{ url_for('chords_create') }}">
-  <table>
-    <tr>
-      <td>
-        {{ form.key.label }}
-      </td>
-      <td>
-        {{ form.name.label }}
-      </td>
-      <td>
-        {{ form.notes.label }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{ form.key }}
-      </td>
-      <td>
-        {{ form.name }}
-      </td>
-      <td>
-        {{ form.notes }}
-      </td>
-      <td>
-        <input type="submit" value="Add a new chord"/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-          {% for error in form.notes.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-      </td>
-    </tr>
+<h3>Add new song</h3>
+<p> Add new chord by giving it's name and artist. You can add chords to song later after creating the song</p>
+<form method="POST" action="{{ url_for('songs_create') }}">
+  <div class="form-row">
+    <div class="form-group col-sm-2">
+      <label for="name">{{ form.name.label }}</label>
+    </div>
+    <div class="form-group col-sm-4">
+      {{ form.name }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-2">
+      <label for="artist">{{ form.artist.label }}</label>
+    </div>
+    <div class="form-group col-sm-4">
+      {{ form.artist }}
+    </div>
+  </div>
+  {% if form.name.errors %}
+    {% for error in form.name.errors %}
+    <div class="row alert alert-danger" role="alert">
+       {{ error }}
+    </div>
+    {% endfor %}
+  {% endif %}
+  {% if form.artist.errors %}
+    {% for error in form.artist.errors %}
+    <div class="row alert alert-danger" role="alert">
+       {{ error }}
+    </div>
+    {% endfor %}
+  {% endif %}
+  <div class="form-row">
+    <div class="form-group col-sm-3">
+        <input type="submit" value="Add a new chord" class="btn btn-success" />
+    </div>
+  </div>
 </form>
 {% endblock %}

@@ -4,9 +4,8 @@ from wtforms import StringField, validators
 
 class SongForm(FlaskForm):
 
-    name = StringField("Name", validators=[validators.required()])
-    artist = StringField("Artist", validators=[validators.required()])
+    name = StringField("Name", validators=[validators.InputRequired()])
+    artist = StringField("Artist", validators=[validators.InputRequired()])
 
     class Meta:
         csrf = False
-

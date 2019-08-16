@@ -14,4 +14,29 @@ def songs_index():
     users_in_database = {x.id: x.name for x in users_in_database}
 
     return render_template("songs/list.html",
-            chords=Song.query.all(), users=users_in_database)
+                           songs=Song.query.all(),
+                           users=users_in_database)
+
+
+@app.route("/songs/new/")
+@login_required
+def songs_form():
+    """View controller for adding new song"""
+    return render_template("songs/new.html", form=SongForm())
+
+
+@app.route("/songs/", methods=["POST"])
+@login_required
+def songs_create():
+    """Method gets user input from form and adds new song to db"""
+    form = SongForm(request.form)
+
+    if not form.validate():
+        return render_template("songs/new.html", form=form)
+
+    new_song = Song(form.name.data, form.artist.data)
+    new_song.account_id = current_user.id
+    db.session().add(new_song)
+    db.session().commit()
+
+    return redirect(url_for("songs_index"))

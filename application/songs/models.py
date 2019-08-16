@@ -14,5 +14,5 @@ class Song(BaseWithDates):
     favourite_songs = db.relationship("UserFavouriteSong", backref='song', lazy=True)
 
     def __init__(self, name, artist):
-        self.key = name
-        self.name = artist
+        self.name = name
+        self.artist = artist
