@@ -3,50 +3,39 @@
 
 {% block body %}
 
-<h2>Register</h2>
-<!--
-    ks. hyvä rekisteröitymislomakepohja
-    https://blog.prototypr.io/8-ways-to-create-the-perfect-registration-form-6a155ed972f1?gi=22aa1036d4d4
--->
+<h3>Register</h3>
 {{ error }}
 <form method="POST" action="{{ url_for('auth_register') }}">
-  <table>
-    <tr>
-      <td>
-	{{ form.name.label }}
-      </td>
-      <td>
-	{{ form.name }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-	{{ form.username.label }}
-      </td>
-      <td>
-	{{ form.username }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-	{{ form.password.label }}
-      </td>
-      <td>
-	{{ form.password }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-	{{ form.passwordAgain.label }}
-      </td>
-      <td>
-	{{ form.passwordAgain }}
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-	<input type="submit" value="Register"/>
-      </td>
-    </tr>
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">	{{ form.name.label }}</label>
+      {{ form.name(class="form-control mb-2", placeholder="Name") }}
+    </div>
+    <div class="col-auto">
+        <label class="sr-only" for="inlineFormInputGroup">{{ form.username.label }}</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        {{ form.username(class="form-control", placeholder="Username") }}
+      </div>
+    </div>
+  </div>
+  <div class="form-row form-group input align-items-center">
+    <div class="col-auto">
+      {{ form.password(class="form-control", placeholder="Password") }}
+      <small id="passwordHelp"  class="form-text text-muted">Your password needs to contain at least 5 characters.</small>
+    </div>
+  </div>
+  <div class="form-row form-group">
+    <div class="col-auto">
+        {{ form.passwordAgain(class="form-control", placeholder="Password again") }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-auto">
+      <input type="submit" class="btn btn-primary mb-2" value="Register" />
+    </div>
+  </div>
 </form>
 {% endblock %}
