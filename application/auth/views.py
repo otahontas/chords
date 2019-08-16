@@ -13,7 +13,6 @@ def auth_login():
         return render_template("auth/loginform.html", form=LoginForm())
 
     form = LoginForm(request.form)
-    # TODO: validoi kirjautuminen?
 
     user = User.query.filter_by(username=form.username.data,
                                 password=form.password.data).first()
@@ -42,10 +41,6 @@ def auth_register():
     form = RegisterForm(request.form)
 
     if not form.validate():
-        return render_template("auth/register.html", form=form)
-
-    if form.password.data != form.passwordAgain.data:
-        form.password.errors.append("Passwords don't match")
         return render_template("auth/register.html", form=form)
 
     taken_username = User.query.filter(

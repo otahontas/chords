@@ -13,11 +13,13 @@ class LoginForm(FlaskForm):
 
 class RegisterForm(FlaskForm):
     """Register form for potential new users"""
-    name = StringField("Name", [validators.Length(min=5, max=20)])
-    username = StringField("Username", [validators.Length(min=2, max=20)])
-    password = PasswordField("Password", [validators.Length(min=5, max=30)])
-    passwordAgain = PasswordField("Password again",
-                                  [validators.Length(min=5, max=30)])
+    name = StringField("Name", [validators.InputRequired()])
+    username = StringField("Username", [validators.InputRequired()])
+    password = PasswordField("Password", [validators.Length(min=5,
+                                          message='Too short password'),
+                                          validators.EqualTo('passwordAgain',
+                                          message='Passwords must match')])
+    passwordAgain = PasswordField("Password again")
 
     class Meta:
         csrf = False
