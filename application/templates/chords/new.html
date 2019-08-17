@@ -34,13 +34,26 @@ Add new chord by giving it's base key, name and other notes used in chord. Value
         {{ form.notes(class="form-control", size="6") }}
     </div>
   </div>
+  {% if form.key.errors %}
+    {% for error in form.key.errors %}
+    <div class="row alert alert-danger" role="alert">
+       {{ error }}
+    </div>
+    {% endfor %}
+  {% endif %}
+  {% if form.name.errors %}
+    {% for error in form.name.errors %}
+    <div class="row alert alert-danger" role="alert">
+       {{ error }}
+    </div>
+    {% endfor %}
+  {% endif %}
   {% if form.notes.errors %}
-        {% for error in form.notes.errors %}
-        <div class="row alert alert-danger" role="alert">
-           {{ error }}
-        </div>
-        {% endfor %}
-  </div>
+    {% for error in form.notes.errors %}
+    <div class="row alert alert-danger" role="alert">
+       {{ error }}
+    </div>
+    {% endfor %}
   {% endif %}
   <div class="form-row">
     <div class="form-group col-sm-3">

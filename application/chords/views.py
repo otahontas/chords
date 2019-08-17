@@ -61,6 +61,13 @@ def chords_create():
     if not form.validate():
         return render_template("chords/new.html", form=form)
 
+    chord_already_added = Chord.query.filter_by(key=form.key.data,
+                                               name=form.name.data).first()
+
+    if chord_already_added:
+        form.name.errors.append("Chord is already in database")
+        return render_template("chords/new.html", form=form)
+
     new_chord = Chord(form.key.data, form.name.data)
     new_chord.account_id = current_user.id
     db.session().add(new_chord)
