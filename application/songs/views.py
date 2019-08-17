@@ -33,6 +33,13 @@ def songs_create():
     if not form.validate():
         return render_template("songs/new.html", form=form)
 
+    song_already_added = Song.query.filter_by(name=form.name.data,
+                                              artist=form.artist.data).first()
+
+    if song_already_added:
+        form.name.errors.append("Song is already in database")
+        return render_template("songs/new.html", form=form)
+
     new_song = Song(form.name.data, form.artist.data)
     new_song.account_id = current_user.id
     db.session().add(new_song)
