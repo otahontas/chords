@@ -14,12 +14,15 @@ def auth_login():
 
     form = LoginForm(request.form)
 
+    if not form.validate():
+        return render_template("auth/loginform.html", form=form)
+
     user = User.query.filter_by(username=form.username.data,
                                 password=form.password.data).first()
 
     if not user:
-        return render_template("auth/loginform.html", form=form,
-                               error="No such username or password")
+        form.username.errors.append("Username or password incorrect")
+        return render_template("auth/loginform.html", form=form)
 
     login_user(user)
     return redirect(url_for("index"))
@@ -43,8 +46,7 @@ def auth_register():
     if not form.validate():
         return render_template("auth/register.html", form=form)
 
-    taken_username = User.query.filter(
-        User.username == form.username.data).first()
+    taken_username = User.query.filter_by(username=form.username.data).first()
     if taken_username:
         form.username.errors.append("This username is already taken")
         return render_template("auth/register.html", form=form)

@@ -2,27 +2,40 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('auth_login') }}">
-  <table>
-    <tr>
-      <td>
-	{{ form.username.label }}
-      </td>
-      <td>
-	{{ form.username }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-	{{ form.password.label }}
-      </td>
-      <td>
-	{{ form.password }}
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-	<input type="submit" value="Login"/>
-      </td>
-    </tr>
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+        <label class="sr-only" for="inlineFormInputGroup">{{ form.username.label }}</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        {{ form.username(class="form-control", placeholder="Username") }}
+      </div>
+    </div>
+  </div>
+  <div class="form-row form-group align-items-center">
+    <div class="col-auto">
+      {{ form.password(class="form-control", placeholder="Password") }}
+    </div>
+  </div>
+  {% if form.username.errors %}
+    {% for error in form.username.errors %}
+    <div class="row alert alert-danger" role="alert">
+       {{ error }}
+    </div>
+    {% endfor %}
+  {% endif %}
+  {% if form.password.errors %}
+    {% for error in form.password.errors %}
+    <div class="row alert alert-danger" role="alert">
+       {{ error }}
+    </div>
+    {% endfor %}
+  {% endif %}
+  <div class="form-row">
+    <div class="col-auto">
+      <input type="submit" class="btn btn-primary mb-2" value="Register" />
+    </div>
+  </div>
 </form>
 {% endblock %}
