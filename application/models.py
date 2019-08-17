@@ -7,7 +7,7 @@ class Base(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
 
-class BaseWithDates(Base):
+class Dates(db.Model):
 
     __abstract__ = True
   
