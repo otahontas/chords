@@ -16,6 +16,12 @@ def songs_index():
                            songs=Song.query.all(),
                            users=users_in_database)
 
+@app.route("/songs/<song_id>", methods=["GET"])
+def get_song(song_id):
+    s = Song.query.get(song_id)
+
+    return render_template("songs/song.html", song=s)
+
 
 @app.route("/songs/new")
 @login_required
