@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import flash, render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
 
 from application import app, db
@@ -25,12 +25,14 @@ def auth_login():
         return render_template("auth/loginform.html", form=form)
 
     login_user(user)
+    flash('You were successfully logged in')
     return redirect(url_for("index"))
 
 
 @app.route("/auth/logout")
 def auth_logout():
     """View controller for user logout"""
+    flash('You were successfully logged out')
     logout_user()
     return redirect(url_for("index"))
 
@@ -56,4 +58,5 @@ def auth_register():
     db.session().add(user)
     db.session().commit()
 
+    flash('Your account was succesfully created, please login')
     return redirect(url_for("auth_login"))
