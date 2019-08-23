@@ -6,7 +6,6 @@ from application.auth.models import User
 from application.songs.models import Song
 from application.songs.forms import SongForm, SongEditForm
 
-# TODO: Add flashes for crud-methods
 # TODO: back to song list buttons for every page in chord layout
 # TODO: isolate error handling to different module?
 
@@ -64,13 +63,14 @@ def songs_edit(song_id):
     s = Song.query.get(song_id)
 
     if request.method == "GET":
-        return render_template("songs/edit.html", form=SongEditForm(), song=s)
+        return render_template("songs/edit.html",
+                               form=SongEditForm(new_name=s.name,
+                                                 new_artist=s.artist),song=s)
 
     form = SongEditForm(request.form)
 
     if not form.validate():
         return render_template("songs/edit.html", form=form, song=s)
-    
 
     song_already_added = Song.query.filter_by(name=form.new_name.data,
                                               artist=form.new_artist.data).first()
