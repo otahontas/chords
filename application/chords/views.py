@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, url_for
+from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 
 from application import app, db
@@ -86,4 +86,6 @@ def chords_create():
         db.session().add(new_note)
     db.session().commit()
 
+
+    flash('Song succesfully added')
     return redirect(url_for("chords_index"))

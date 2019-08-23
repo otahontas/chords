@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, url_for
+from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 
 from application import app, db
@@ -21,6 +21,7 @@ def songs_index():
 
 @app.route("/songs/<song_id>", methods=["GET"])
 def get_song(song_id):
+    """View controller for showing individual songs"""
     s = Song.query.get(song_id)
 
     return render_template("songs/song.html", song=s)
@@ -54,6 +55,7 @@ def songs_create():
     db.session().add(new_song)
     db.session().commit()
 
+    flash('Song successfully added')
     return redirect(url_for("songs_index"))
 
 @app.route("/songs/edit/<song_id>", methods=["GET", "POST"])
@@ -81,6 +83,7 @@ def songs_edit(song_id):
 
     db.session().commit()
 
+    flash('Song successfully updated')
     return redirect(url_for("songs_index"))
 
 
@@ -93,4 +96,5 @@ def songs_delete(song_id):
     db.session.delete(s)
     db.session().commit()
 
+    flash('Song successfully deleted')
     return redirect(url_for("songs_index"))

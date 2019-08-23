@@ -35,6 +35,7 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 - Suosikkisoinnut per hlö
 - Haku
 - passwordit salatuiksi kannassa
+- käyttäjän omien tietojen muokkaaminen
 - sointujen rankin lisääminen oikein kun sävelet on oikeesti eri järjestyksessä
 - redirektaus loginin jälkeen takas osoitteeseen, josta käyttäjä tuli ks. esim [täältä](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins)
 - 404-sivut ei löytyville queryille (esim)
@@ -42,6 +43,8 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
     - dokumentaatio
     - koodin selkeys (naming conventions, docstrings, moduulit)
     - abstrahointi + moduuleihin eristäminen
+        - formien validointi omaansa?
+        - kannassa olevan tiedon checkkaaminen omaansa?
     - Päivitä käyttötapauksia
     - Tee käyttötapauksien SQL-kyselyt
     - Tee asennusohjeet
