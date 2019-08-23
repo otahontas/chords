@@ -14,14 +14,14 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 ## Toiminnot:
 - kirjautuminen ja uuden käyttäjän luominen
 - soinnun lisääminen
-- kaikkien sointujen listaaminen, sointujen hakeminen ja siinä esiintyvien sävelien listaaminen
+- kaikkien sointujen listaaminen, sointujen hakeminen ja soinnuissa esiintyvien sävelien listaaminen
 - kappaleiden lisääminen, listaaminen ja hakeminen sekä muokkaaminen ja poistaminen (CRUD-ominaisuudet)
 - sointujen lisääminen kappaleisiin sekä sointujen listaaminen kappaleen yhteydessä
 - kappaleiden merkkaaminen suosikiksi
-- suosituimpien kappaleiden listaaminen (jos kerkeää)
+- suosituimpien kappaleiden listaaminen
 - Lisäksi ylläpitäjän toiminnot:
     - Muokkaa tai poista sointuja
-    - Listaa, muokkaa tai poista käyttäjiä
+    - Lisää, listaa, muokkaa tai poista käyttäjiä (CRUD)
 
 
 # Dokumentaatio:
@@ -29,13 +29,19 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 - [Tietokantarakenteen kuvaus](/documentation/databasestructure.md)
 
 # TODO:
-- Song ja chord linkitykset eli chordien lisääminen yksittäisiin songeihin
 - yhteenvetokyselyt etusivulle
-- admin-toolit ja sointujen päivittämisnäkymä
+- parempi layout sointuja sisältävien kappaleiden näyttämiseen biiseissä
+    - tän toiminta tehokkaasti, dictionarylla tms. ei n+1 -mahista
+- admin-rooli
+- sointujen päivittämisnäkymä adminille
+- injektionticheck
+- käyttäjätietojen hallinnointinäkymä adminille
+- biisien muokkaus sallituksi vain sen lisänneelle henkilölle tai adminille
 - Suosikkisoinnut per käyttäjä
 - Haku
 - passwordit salatuiksi kannassa
 - käyttäjän omien tietojen muokkaaminen
+- sointujen näyttäminen pianograffan päällä?
 - sointujen rankin lisääminen oikein kun sävelet on oikeesti eri järjestyksessä
 - redirektaus loginin jälkeen takas osoitteeseen, josta käyttäjä tuli ks. esim [täältä](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins)
 - 404-sivut ei löytyville queryille (esim)
