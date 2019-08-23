@@ -22,10 +22,10 @@
         {% if current_user.is_authenticated %}
         <div class="row">
             <div class="col-auto">
-                <a href="{{ url_for('songs_edit', song_id = song.id) }}" class="btn btn-primary">Edit chord</a>
+                <a href="{{ url_for('songs_edit', song_id = song.id) }}" class="btn btn-primary">Edit song</a>
             </div>
             <div class="col-auto">
-                <a href="{{ url_for('songs_delete', song_id = song.id) }}" class="btn btn-danger">Delete chord</a>
+                <a href="{{ url_for('songs_delete', song_id = song.id) }}" class="btn btn-danger">Delete song</a>
             </div>
         </div>
         {% endif %}
