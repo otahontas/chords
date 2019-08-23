@@ -21,6 +21,9 @@
             <div class="col-auto">
                 <a href="{{ url_for('songs_edit', song_id = song.id) }}" class="btn btn-primary">Edit chord</a>
             </div>
+            <div class="col-auto">
+                <a href="{{ url_for('songs_delete', song_id = song.id) }}" class="btn btn-danger">Delete chord</a>
+            </div>
         </div>
         {% endif %}
     </div>

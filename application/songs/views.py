@@ -7,7 +7,7 @@ from application.songs.models import Song
 from application.songs.forms import SongForm, SongEditForm
 
 # TODO: Add flashes for crud-methods
-# TODO: back to song list buttons for every page in chord layout 
+# TODO: back to song list buttons for every page in chord layout
 # TODO: isolate error handling to different module?
 
 @app.route("/songs", methods=["GET"])
@@ -79,6 +79,18 @@ def songs_edit(song_id):
     s.name = form.new_name.data
     s.artist = form.new_artist.data
 
+    db.session().commit()
+
+    return redirect(url_for("songs_index"))
+
+
+@app.route("/songs/delete/<song_id>", methods=["GET"])
+@login_required
+def songs_delete(song_id):
+
+    s = Song.query.get(song_id)
+
+    db.session.delete(s)
     db.session().commit()
 
     return redirect(url_for("songs_index"))
