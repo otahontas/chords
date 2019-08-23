@@ -29,15 +29,15 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 - [Tietokantarakenteen kuvaus](/documentation/databasestructure.md)
 
 # TODO:
-- Kappaleiden alle kappaleiden lisäys, kaikkien listaaminen, yksittäisen katselu muokkaaminen ja poistaminen
-- Song ja chord linkitykset
+- Song ja chord linkitykset eli chordien lisääminen yksittäisiin songeihin
 - yhteenvetokyselyt etusivulle
+- admin-toolit ja sointujen päivittämisnäkymä
+- Suosikkisoinnut per hlö
 - Haku
 - passwordit salatuiksi kannassa
-- admin-toolit ja sointujen päivittämisnäkymä
-- Suosikkisoinnut
 - sointujen rankin lisääminen oikein kun sävelet on oikeesti eri järjestyksessä
 - redirektaus loginin jälkeen takas osoitteeseen, josta käyttäjä tuli ks. esim [täältä](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins)
+- 404-sivut ei löytyville queryille (esim)
 - Jatkuvasti chekattavaa / erityisesti lopussa
     - dokumentaatio
     - koodin selkeys (naming conventions, docstrings, moduulit)
@@ -46,6 +46,7 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
     - Tee käyttötapauksien SQL-kyselyt
     - Tee asennusohjeet
     - Tee käyttöohjeet
+    - ks. TODOt läpi omasta kannasta
 - Siivoilu
     - poista unnecessary stuff reposta
     - .gitignore kunnossa
