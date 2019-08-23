@@ -4,8 +4,11 @@ from flask_login import login_required, current_user
 from application import app, db
 from application.auth.models import User
 from application.songs.models import Song
-from application.songs.forms import SongForm
+from application.songs.forms import SongForm, SongEditForm
 
+# TODO: Add flashes for crud-methods
+# TODO: back to song list buttons for every page in chord layout 
+# TODO: isolate error handling to different module?
 
 @app.route("/songs", methods=["GET"])
 def songs_index():
@@ -49,6 +52,33 @@ def songs_create():
     new_song = Song(form.name.data, form.artist.data)
     new_song.account_id = current_user.id
     db.session().add(new_song)
+    db.session().commit()
+
+    return redirect(url_for("songs_index"))
+
+@app.route("/songs/edit/<song_id>", methods=["GET", "POST"])
+@login_required
+def songs_edit(song_id):
+    s = Song.query.get(song_id)
+
+    if request.method == "GET":
+        return render_template("songs/edit.html", form=SongEditForm(), song=s)
+
+    form = SongEditForm(request.form)
+
+    if not form.validate():
+        return render_template("songs/edit.html", form=form, song=s)
+
+    song_already_added = Song.query.filter_by(name=form.new_name.data,
+                                              artist=form.new_artist.data).first()
+
+    if song_already_added:
+        form.new_name.errors.append("Song is already in database")
+        return render_template("songs/edit.html", form=form, song=s)
+
+    s.name = form.new_name.data
+    s.artist = form.new_artist.data
+
     db.session().commit()
 
     return redirect(url_for("songs_index"))

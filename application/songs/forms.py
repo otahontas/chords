@@ -9,3 +9,12 @@ class SongForm(FlaskForm):
 
     class Meta:
         csrf = False
+
+
+class SongEditForm(FlaskForm):
+
+    new_name = StringField("Name", [validators.InputRequired()])
+    new_artist = StringField("Artist", [validators.InputRequired()])
+
+    class Meta:
+        csrf = False

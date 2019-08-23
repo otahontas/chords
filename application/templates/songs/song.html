@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="card">
+    <div class="card-header">
+        <strong>{{ song.name }}</strong> by <strong>{{ song.artist }}</strong>
+    </div>
+    <div class="card-body">
+        {% if not chords %}
+        <p class="card-text">This song doesn't yet have any chords, please add one</p></p>
+        {% else %}
+        <p class="card-text">This song has {{ len(songs) }} chords, which are:</p>
+          <ul class="list-group list-group-flush">
+            {% for chord in chords %}
+              <li list-group-item>{{ chord }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if current_user.is_authenticated %}
+        <div class="row">
+            <div class="col-auto">
+                <a href="{{ url_for('songs_edit', song_id = song.id) }}" class="btn btn-primary">Edit chord</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <a href="{{ url_for('songs_index') }}" class="btn btn-outline-success">Back to songs list</a>
+    </div>
+</div>
+{% endblock %}
