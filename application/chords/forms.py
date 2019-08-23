@@ -10,15 +10,17 @@ def check_notes_length(form, field):
 
 
 class ChordForm(FlaskForm):
-    """Form for new chord creation, catches selection from Notes table"""
-    notes_in_database = Note.query.with_entities(Note.name)
-    notes_in_database = [(x.name, x.name.title()) for x in notes_in_database]
+    """Form for new chord creation, catches selection from Notes table. 
+    Use basic query instead of QuerySelectField so we can format options 
+    before showing them."""
+    notes_in_database = Note.query.with_entities(Note.id, Note.name)
+    notes_for_fields = [(x.id, x.name.title()) for x in notes_in_database]
     names = [('major', 'Major'), ('minor', 'Minor')]
 
-    key = SelectField("Key", choices=notes_in_database)
+    key = SelectField("Key", coerce=int, choices=notes_for_fields)
     name = SelectField("Name", choices=names)
-    notes = SelectMultipleField("Notes", choices=notes_in_database,
-                                coerce=str, validators=[check_notes_length])
+    notes = SelectMultipleField("Notes", choices=notes_for_fields,
+                                coerce=int, validators=[check_notes_length])
 
     class Meta:
         csrf = False

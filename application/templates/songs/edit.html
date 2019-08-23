@@ -20,6 +20,17 @@
       {{ form.new_artist(class="form-control", placeholder=song.artist) }}
     </div>
   </div>
+  <div class="form-row">
+    <div class="form-group col-sm-3">
+      <label for="notes">{{ form.chords.label }}</label>
+      <small id="notesHelpBlock" class="form-text text-muted">
+          Multiple chords can be selected by holding control / command down on Desktop
+      </small>
+    </div>
+    <div class="form-group col-sm-3">
+        {{ form.chords(class="form-control", size="6") }}
+    </div>
+  </div>
   {% if form.new_name.errors %}
     {% for error in form.new_name.errors %}
     <div class="row alert alert-danger" role="alert">

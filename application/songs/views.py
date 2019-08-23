@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 
 from application import app, db
 from application.auth.models import User
+from application.chords.models import Chord
+from application.linktables.models import SongChord
 from application.songs.models import Song
 from application.songs.forms import SongForm, SongEditForm
 
@@ -23,7 +25,15 @@ def get_song(song_id):
     """View controller for showing individual songs"""
     s = Song.query.get(song_id)
 
-    return render_template("songs/song.html", song=s)
+    chords = (db.session.query(Chord)
+              .join(SongChord)
+              .join(Song)
+              .filter(Chord.id == SongChord.chord_id)
+              .filter(Song.id == song_id)
+              .all())
+
+    return render_template("songs/song.html", song=s, chords=chords,
+                           count=len(chords))
 
 
 @app.route("/songs/new")
@@ -82,8 +92,15 @@ def songs_edit(song_id):
     s.name = form.new_name.data
     s.artist = form.new_artist.data
 
-    db.session().commit()
+    #chords_in_database = Chord.query.with_entities(Chord.id, Chord.key)
 
+    for chord in form.chords.data:
+        new_chord = SongChord()
+        new_chord.song_id = s.id
+        new_chord.chord_id = chord
+        db.session().add(new_chord)
+    
+    db.session().commit()
     flash('Song successfully updated')
     return redirect(url_for("songs_index"))
 

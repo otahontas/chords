@@ -14,7 +14,7 @@ class ChordNote(Base):
 class SongChord(Base):
 
     song_id = db.Column(db.Integer, db.ForeignKey('song.id'), nullable=False)
-    note_id = db.Column(db.Integer, db.ForeignKey('chord.id'), nullable=False)
+    chord_id = db.Column(db.Integer, db.ForeignKey('chord.id'), nullable=False)
 
     def __init__(self):
         pass

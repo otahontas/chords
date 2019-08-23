@@ -3,7 +3,7 @@
 [Live-demo Herokussa](https://sointutietokanta.herokuapp.com/)
 Testitunnukset:
 - käyttäjä: testi
-- salasana: testinen123
+- salasana: testi123
 
 # Aihekuvaus
 

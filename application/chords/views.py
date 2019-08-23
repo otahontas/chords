@@ -55,37 +55,35 @@ def chords_form():
 @login_required
 def chords_create():
     """Method gets user input from form, adds new chord to db, catches its id
-    and links chord to notes (base + others) user has given"""
+    and links chord to notes (base + others) user has given. This is done
+    by using id's got from input form."""
     form = ChordForm(request.form)
 
     if not form.validate():
         return render_template("chords/new.html", form=form)
 
-    chord_already_added = Chord.query.filter_by(key=form.key.data,
-                                                name=form.name.data).first()
+    key_name = Note.query.get(form.key.data).name
 
+    chord_already_added = Chord.query.filter_by(key=key_name,
+                                                name=form.name.data).first()
     if chord_already_added:
         form.name.errors.append("Chord is already in database")
         return render_template("chords/new.html", form=form)
 
-    new_chord = Chord(form.key.data, form.name.data)
+    new_chord = Chord(key_name, form.name.data)
     new_chord.account_id = current_user.id
     db.session().add(new_chord)
     db.session().commit()
 
-    notes_in_database = Note.query.with_entities(Note.id, Note.name)
-    notes_in_database = {x.name: x.id for x in notes_in_database}
-    notes_from_user = [new_chord.key]
+    notes_from_user = [form.key.data]
     notes_from_user.extend(form.notes.data)
-    notes_from_user = [x.rstrip() for x in notes_from_user]
 
     for i, note in enumerate(notes_from_user):
         new_note = ChordNote(i)
         new_note.chord_id = new_chord.id
-        new_note.note_id = notes_in_database[note]
+        new_note.note_id = note
         db.session().add(new_note)
     db.session().commit()
 
-
-    flash('Song succesfully added')
+    flash('Chord succesfully added')
     return redirect(url_for("chords_index"))

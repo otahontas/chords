@@ -9,12 +9,15 @@
         {% if not chords %}
         <p class="card-text">This song doesn't yet have any chords, please add one</p></p>
         {% else %}
-        <p class="card-text">This song has {{ len(songs) }} chords, which are:</p>
-          <ul class="list-group list-group-flush">
+        <p class="card-text">This song has {{ count }} chords, which are:</p>
+          <div class="list-group list-group-flush">
             {% for chord in chords %}
-              <li list-group-item>{{ chord }}</li>
+            <a href={{ url_for('chord_show_notes', chord_id = chord.id) }}
+               class="list-group-item list-group-item-action">
+                {{ chord.key.title() }} {{ chord.name }}
+            </a>
             {% endfor %}
-          </ul>
+          </div>
         {% endif %}
         {% if current_user.is_authenticated %}
         <div class="row">
