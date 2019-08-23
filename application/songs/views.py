@@ -70,6 +70,7 @@ def songs_edit(song_id):
 
     if not form.validate():
         return render_template("songs/edit.html", form=form, song=s)
+    
 
     song_already_added = Song.query.filter_by(name=form.new_name.data,
                                               artist=form.new_artist.data).first()

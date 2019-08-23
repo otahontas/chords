@@ -58,5 +58,5 @@ def auth_register():
     db.session().add(user)
     db.session().commit()
 
-    flash('Your account was succesfully created, please login')
+    flash('Your account was successfully created, please login')
     return redirect(url_for("auth_login"))

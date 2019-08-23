@@ -32,7 +32,7 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 - Song ja chord linkitykset eli chordien lisääminen yksittäisiin songeihin
 - yhteenvetokyselyt etusivulle
 - admin-toolit ja sointujen päivittämisnäkymä
-- Suosikkisoinnut per hlö
+- Suosikkisoinnut per käyttäjä
 - Haku
 - passwordit salatuiksi kannassa
 - käyttäjän omien tietojen muokkaaminen

@@ -1,13 +1,6 @@
 {% extends "layout.html" %}
 
 {% block body %}
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-      <div class="flashes alert alert-success">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
 <form method="POST" action="{{ url_for('auth_login') }}">
   <div class="form-row align-items-center">
     <div class="col-auto">
