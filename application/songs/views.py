@@ -5,12 +5,10 @@ from application import app, db
 from application.auth.models import User
 from application.chords.models import Chord
 from application.notes.models import Note
-from application.linktables.models import ChordNote,SongChord
+from application.linktables.models import ChordNote, SongChord
 from application.songs.models import Song
 from application.songs.forms import SongForm, SongEditForm
 
-# TODO: back to song list buttons for every page in chord layout
-# TODO: isolate error handling to different module?
 
 @app.route("/songs", methods=["GET"])
 def songs_index():
@@ -20,6 +18,7 @@ def songs_index():
     return render_template("songs/list.html",
                            songs=Song.query.all(),
                            users=users_in_database)
+
 
 @app.route("/songs/<song_id>", methods=["GET"])
 def get_song(song_id):
@@ -94,8 +93,6 @@ def songs_edit(song_id):
 
     s.name = form.new_name.data
     s.artist = form.new_artist.data
-
-    #chords_in_database = Chord.query.with_entities(Chord.id, Chord.key)
 
     for chord in form.chords.data:
         new_chord = SongChord()

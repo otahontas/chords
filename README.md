@@ -29,9 +29,9 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 - [Tietokantarakenteen kuvaus](/documentation/databasestructure.md)
 
 # TODO:
-- yhteenvetokyselyt etusivulle
 - admin-rooli
-- sointujen päivittäminen kuntoon
+- biisien tietojen päivittäminen kuntoon:
+    - edellisten tietojen highlight ja error, jos mitään tietoja ei päivitetä
 - sointujen päivittämisnäkymä adminille
 - injektionticheck
 - käyttäjätietojen hallinnointinäkymä adminille

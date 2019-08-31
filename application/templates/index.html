@@ -17,4 +17,35 @@
         <a href="{{ url_for('songs_index') }} " class="btn btn-outline-primary">Check out all songs</a>
     </div>
 </div>
+<div class="row" style="margin-top:50px;">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Statistics</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Most chord added by:</h6>
+                <div class="card-text">
+                    <table class="table table-sm">
+                        {% for row in stats.mostChords %}
+                        <tr>
+                            <td>{{row.username}}</td>
+                            <td>{{row.count}} kpl</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <h6 class="card-subtitle mb-2 text-muted">Most songs added by:</h6>
+                <div class="card-text">
+                    <table class="table table-sm">
+                        {% for row in stats.mostSongs %}
+                        <tr>
+                            <td>{{row.username}}</td>
+                            <td>{{row.count}} kpl</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
