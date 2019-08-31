@@ -4,7 +4,8 @@ from flask_login import login_required, current_user
 from application import app, db
 from application.auth.models import User
 from application.chords.models import Chord
-from application.linktables.models import SongChord
+from application.notes.models import Note
+from application.linktables.models import ChordNote,SongChord
 from application.songs.models import Song
 from application.songs.forms import SongForm, SongEditForm
 
@@ -28,6 +29,8 @@ def get_song(song_id):
     chords = (db.session.query(Chord)
               .join(SongChord)
               .join(Song)
+              .join(ChordNote)
+              .join(Note)
               .filter(Chord.id == SongChord.chord_id)
               .filter(Song.id == song_id)
               .all())

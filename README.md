@@ -30,9 +30,8 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 
 # TODO:
 - yhteenvetokyselyt etusivulle
-- parempi layout sointuja sisältävien kappaleiden näyttämiseen biiseissä
-    - tän toiminta tehokkaasti, dictionarylla tms. ei n+1 -mahista
 - admin-rooli
+- sointujen päivittäminen kuntoon
 - sointujen päivittämisnäkymä adminille
 - injektionticheck
 - käyttäjätietojen hallinnointinäkymä adminille

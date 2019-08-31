@@ -51,4 +51,9 @@
     </div>
   </div>
 </form>
+<div class="row">
+    <div class="col-auto">
+        <a href="{{ url_for('get_song', song_id = song.id) }}" class="btn btn-outline-primary">Back to song without changing</a>
+    </div>
+</div>
 {% endblock %}
