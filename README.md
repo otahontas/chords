@@ -27,24 +27,25 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
 # Dokumentaatio:
 - [Käyttötapaukset](/documentation/userstories.md)
 - [Tietokantarakenteen kuvaus](/documentation/databasestructure.md)
+- AS
 
-# TODO:
-- admin-rooli
-- biisien tietojen päivittäminen kuntoon:
-    - edellisten tietojen highlight ja error, jos mitään tietoja ei päivitetä
-- sointujen päivittämisnäkymä adminille
-- injektionticheck
+# TODO vika viikko:
+- flask-security ja eri käyttäjien toiminallisuudet
+- Oman profiilin hallinta
+- Admin tunnukset ja roolien hallinta
+- Haku
+- Suosikkisoinnut per käyttäjä
+- Sointujen sävelet näkyviin sointu-sivulle
+- Loput statistiikat
+- Pagerizer
+- injektionticheckit
+- Biisien ja sointujen päivittäminen ja lisääminen:
+    - UI paremmaksi (checkboxit)
+    - Olemassa olevien tietojen näyttäminen & validointi kuntoon
+- sointujen päivittämisnäkymä adminille (CRUD)
 - käyttäjätietojen hallinnointinäkymä adminille
 - biisien muokkaus sallituksi vain sen lisänneelle henkilölle tai adminille
-- Suosikkisoinnut per käyttäjä
-- Haku
-- passwordit salatuiksi kannassa
-- käyttäjän omien tietojen muokkaaminen
-- sointujen näyttäminen pianograffan päällä?
-- sointujen rankin lisääminen oikein kun sävelet on oikeesti eri järjestyksessä
-- redirektaus loginin jälkeen takas osoitteeseen, josta käyttäjä tuli ks. esim [täältä](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins)
-- 404-sivut ei löytyville queryille (esim)
-- Jatkuvasti chekattavaa / erityisesti lopussa
+- Muu:
     - dokumentaatio
     - koodin selkeys (naming conventions, docstrings, moduulit)
     - abstrahointi + moduuleihin eristäminen
@@ -55,7 +56,9 @@ Järjestelmä osaa käsitellä kolmiäänisiä sointuja (ns. power chordit sekä
     - Tee asennusohjeet
     - Tee käyttöohjeet
     - ks. TODOt läpi omasta kannasta
-- Siivoilu
-    - poista unnecessary stuff reposta
-    - .gitignore kunnossa
-    - development mode pois
+
+# Myöhemmin jos ehtii:
+- sointujen rankin lisääminen oikein kun sävelet on oikeesti eri järjestyksessä
+- redirektaus loginin jälkeen takas osoitteeseen, josta käyttäjä tuli ks. esim [täältä](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins)
+- 404-sivut ei löytyville queryille (esim)
+- Jatkuvasti chekattavaa / erityisesti lopussa
