@@ -1,7 +1,8 @@
 # Demo
 
-[Live-demo Herokussa](https://sointutietokanta.herokuapp.com/)
-Testitunnukset:
+Demo version is [hosted on heroku](https://chordsdb-demo.herokuapp.com/).
+
+Login with test user:
 - käyttäjä: testi
 - salasana: testi123
 
